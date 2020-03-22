@@ -1,0 +1,43 @@
+body {
+    background-color: #f4f7f8;
+  }
+  
+  .navbar {
+    margin: 2rem 0 2.5rem 0;
+  }
+  
+  .my-navbar {
+    align-items: center;
+    background: rgb(179, 218, 221);
+    display: flex;
+    height: 6rem;
+    justify-content: space-between;
+    padding: 0 2%;
+    margin-bottom: 3rem;
+  }
+  
+  .my-navbar-brand {
+    font-size: 20px;
+  }
+  
+  .my-navbar-brand,
+  .my-navbar-item {
+    color: #8c8c8c;
+  }
+  
+  .my-navbar-brand:hover,
+  a.my-navbar-item:hover {
+    color: #ffffff;
+  }
+  
+  .table td:nth-child(2),
+  .table td:nth-child(3),
+  .table td:nth-child(4) {
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .form-control[disabled],
+  .form-control[readonly] {
+    background-color: #fff;
+  }

@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weekplan</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header>
+  <nav class="my-navbar">
+    <a class="my-navbar-brand" href="/">Weekplan</a>
+  </nav>
+</header>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-4">
+        <nav class="panel panel-default">
+          <div class="panel-heading">役割</div>
+          <div class="list-group">
+            {% for role in roles %}
+                <a href="{% url 'tasks.index' id=role.id %}", class="list-group-item">
+                    {{ role.title }}
+                </a>
+            {% endfor %}
+          </div>
+          <div class="panel-body">
+            <a href="#" class="btn btn-default btn-block">
+              役割を追加する
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="column col-md-8">
+        <!-- タスクはここに表示される -->
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
