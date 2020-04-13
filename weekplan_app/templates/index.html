@@ -1,22 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Weekplan</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootflat/2.0.4/css/bootflat.min.css">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header>
-  <nav class="my-navbar">
-    <a class="my-navbar-brand" href="/">Weekplan</a>
-  </nav>
-</header>
-<main>
+{% extends 'base.html' %}
+
+{% block content %}
   <div class="container">
     <div class="row">
       <div class="col col-md-4">
@@ -24,23 +8,55 @@
           <div class="panel-heading">役割</div>
           <div class="list-group">
             {% for role in roles %}
-                <a href="{% url 'tasks.index' id=role.id %}", class="list-group-item">
+                <a 
+                  href="{% url 'tasks.index' id=role.id %}",
+                  class="list-group-item {% if current_role_id == role.id %}active{% endif %}"
+                >
                     {{ role.title }}
                 </a>
             {% endfor %}
           </div>
           <div class="panel-body">
-            <a href="#" class="btn btn-default btn-block">
+            <a href="{% url 'roles.create' %}" class="btn btn-default btn-block">
               役割を追加する
             </a>
           </div>
         </nav>
       </div>
       <div class="column col-md-8">
-        <!-- タスクはここに表示される -->
+        <div class="panel panel-default">
+          <div class="panel-heading">タスク</div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>状態</th>
+              <th>期限</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for task in tasks %}
+                <tr>
+                  <td>{{ task.title }}</td>
+                  <td>
+                    <span class="label">{{ task.get_status_display }}</span>
+                  </td>
+                  <td>{{ task.due_date }}</td>
+                  <td><a href="{% url 'tasks.edit' id=current_role_id task_id=task.id %}">編集</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="panel-body">
+            <div class="text-right">
+              <a href="{% url 'tasks.create' id=current_role_id %}" class="btn btn-default btn-block">
+                タスクを追加する
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</main>
-</body>
-</html>
+{% endblock %}
