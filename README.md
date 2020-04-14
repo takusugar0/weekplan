@@ -22,5 +22,9 @@ Weekplan（製作中）
 `$ git clone git@github.com:takusugar0/weekplan.git`  
 `$ cd weekplan`  
 `$ docker-compose up --build`  
-`
+
 ブラウザで localhost:8000/roles/1/tasks にアクセス
+
+## 残りのやること
+apiでgoogle calenderと連携
+AWSでデプロイ
