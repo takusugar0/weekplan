@@ -26,5 +26,5 @@ Weekplan（製作中）
 ブラウザで localhost:8000/roles/1/tasks にアクセス
 
 ## 残りのやること
-apiでgoogle calenderと連携
-AWSでデプロイ
+- apiでgoogle calenderと連携
+- AWSでデプロイ
