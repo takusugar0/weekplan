@@ -27,4 +27,4 @@ Weekplan（製作中）
 
 ## 残りのやること
 - apiでgoogle calenderと連携
-- AWSでデプロイ
+- AWSを利用してデプロイ
